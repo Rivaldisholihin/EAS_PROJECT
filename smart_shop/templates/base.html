@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Shop — Hero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#27a3ff;
+      --accent-2:#2ec4b6;
+      --glass: rgba(255,255,255,0.85);
+      --dark-overlay: rgba(3,8,15,0.45);
+      --rounded: 80px;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+      background:#111;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+      box-sizing:border-box;
+      position:relative;
+      overflow:hidden;
+      color:#fff;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:url('c59e6b885e5e52682a7e778242d28d8c0d355894.jpg');
+      background-size:cover;
+      background-position:center;
+      filter:brightness(0.4) saturate(1.1);
+      z-index:0;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.45);
+      z-index:1;
+    }
+
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:1200px;
+      text-align:center;
+    }
+
+    .eyebrow{font-weight:600;letter-spacing:1px;color:rgba(255,255,255,0.85);margin-bottom:8px;}
+    .title{
+      font-size:110px;line-height:0.9;margin:0;
+      font-weight:800;
+      color:transparent;
+      background:linear-gradient(90deg,var(--accent),#5de2ff 60%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      display:inline-block;
+    }
+    .subtitle{
+      margin-top:12px;
+      font-size:28px;
+      color:rgba(255,255,255,0.95);
+      font-weight:300;
+    }
+
+    .cta{
+      margin:36px auto 0;
+      display:inline-flex;
+      align-items:center;
+      gap:18px;
+      background:var(--glass);
+      color:#0b1620;
+      padding:20px 42px;
+      border-radius:60px;
+      box-shadow:0 8px 30px rgba(2,6,10,0.5);
+      text-decoration:none;
+      font-weight:600;
+      letter-spacing:1px;
+      backdrop-filter:blur(6px);
+    }
+
+    .cta .icon{
+      width:36px;height:36px;display:inline-grid;place-items:center;background:transparent;border-radius:8px;
+    }
+
+    .floating{
+      position:absolute;
+      z-index:1;
+      pointer-events:none;
+      transition:transform .9s cubic-bezier(.2,.9,.2,1);
+      filter:drop-shadow(0 12px 30px rgba(0,0,0,0.45));
+    }
+
+    .card-a{width:420px;right:-40px;top:60px;transform:rotate(18deg);}
+    .card-b{width:360px;left:-30px;top:30%;transform:rotate(-15deg);}
+    .card-c{width:380px;left:50%;bottom:80px;transform:translateX(-20%) rotate(8deg);}
+    .card-d{width:260px;right:12%;bottom:110px;transform:rotate(-8deg);}
+    .card-e{width:300px;left:10%;top:10%;transform:rotate(10deg);}
+    .card-f{width:340px;right:25%;bottom:10%;transform:rotate(-12deg);}
+    .card-g{width:300px;left:35%;bottom:20%;transform:rotate(6deg);}
+
+    .floating img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:18px;
+    }
+
+    @media(max-width:1100px){
+      .title{font-size:72px}
+      .subtitle{font-size:20px}
+      .card-a{display:none}
+    }
+    @media(max-width:640px){
+      .hero{padding:20px}
+      .title{font-size:44px}
+      .subtitle{font-size:16px}
+      .cta{padding:14px 22px}
+      .card-b,.card-c,.card-d,.card-e,.card-f,.card-g{display:none}
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow" aria-hidden="true">SMART</div>
+      <h1 class="title">SHOP</h1>
+      <p class="subtitle">Smarter, Faster, And Simpler To Use</p>
+
+      <a class="cta" href="{{ url_for('index')}}">
+        <span class="icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h2l.4 2M7 13h10l3-8H6.4" stroke="#0b1620" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.6" fill="#0b1620"/><circle cx="18" cy="20" r="1.6" fill="#0b1620"/></svg>
+        </span>
+        <span>START TO FIND ROUTE</span>
+      </a>
+    </div>
+
+    <div class="floating card-a"><img src="../static/image_source/Desktop Header Light - 18 (1).png" alt="floating card A"></div>
+    <div class="floating card-b"><img src="../static/image_source/Vector.png" alt="floating card B"></div>
+    <div class="floating card-c"><img src="../static/image_source/img-3.png" alt="floating card C"></div>
+    <div class="floating card-d"><img src="../static/image_source/img4.png" alt="floating card D"></div>
+    <div class="floating card-e"><img src="../static/image_source/Vector (1).png" alt="floating card E"></div>
+    <div class="floating card-f"><img src="../static/image_source/Vector (2).png" alt="floating card F"></div>
+    <div class="floating card-g"><img src="../static/image_source/Vector (3).png" alt="floating card G"></div>
+  </section>
+
+  <script>
+    document.addEventListener('mousemove', e=>{
+      const w=window.innerWidth, h=window.innerHeight;
+      const x=(e.clientX - w/2)/(w/2);
+      const y=(e.clientY - h/2)/(h/2);
+      document.querySelectorAll('.floating').forEach((el,i)=>{
+        const depth=(i+1)*6;
+        const tx=x*depth;
+        const ty=y*depth*-1;
+        el.style.transform = el.style.transform.replace(/translate\\([^)]*\\)/, '') + ` translate(${tx}px,${ty}px)`;
+      });
+    });
+  </script>
+
+</body>
+</html>

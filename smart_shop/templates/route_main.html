@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart Shopper — Rute Belanja Optimal</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='CSS/main.css') }}"
+    />
+    <script>
+      window.coords = JSON.parse('{{ coords|tojson|safe }}');
+      window.graph  = JSON.parse('{{ graph|tojson|safe }}');
+    </script>
+    </head>
+  <body>
+    <a href="{{ url_for('home') }}" class="back-btn">Back</a>
+
+    <div class="container">
+      <header>
+        <h1>Smart Shopper</h1>
+        <p>Pilih kategori produk, dapatkan rute belanja tercepat tanpa peta</p>
+      </header>
+
+      <main>
+        <section class="selection">
+          <h2>Pilih Kategori</h2>
+          <div class = "algorithm">
+            <label for="algorithm-select">Pilih Algoritma:</label>
+            <select id="algorithm-select">
+              <option value="a_star">A*</option>
+              <option value="dijkstra">Dijkstra</option>
+              <option value="bfs">BFS</option>
+              <option value="dfs">DFS</option>
+            </select>
+          </div>
+          <div class="categories">
+            {% for cat in categories %}
+            <label class="checkbox-label">
+              <input type="checkbox" value="{{ cat }}" />
+              <span>{{ cat }}</span>
+            </label>
+            {% endfor %}
+          </div>
+
+          <div class="actions">
+            <button id="compute-btn">Hitung Rute</button>
+            <button id="reset-btn">Reset Pilihan</button>
+          </div>
+        </section>
+
+        <section id="result">
+          <h2>Rute Optimal</h2>
+          <div class="summary">
+            <p>
+              <strong>Jarak total (estimasi):</strong>
+              <span id="distance">0</span> meter
+            </p>
+          </div>
+          <ol id="steps" class="steps-list"></ol>
+        </section>
+
+      <section>
+        <h2>Peta Koordinat</h2>
+        <canvas id="mapCanvas" width="650" height="700" style="background:#e6e4e4; border-radius:10px;"></canvas>
+      </section>
+
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+  </body>
+</html>
